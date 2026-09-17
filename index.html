@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Clínica Modelo | Odontologia Premium</title>
+  <meta name="description" content="Projeto demonstrativo de site premium para clínicas odontológicas, criado pela Multiplik Digital." />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#F7F4EE" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --ink:#0D2725;
+      --teal:#1C5B55;
+      --teal-2:#2D7069;
+      --mint:#DDEAE6;
+      --cream:#F7F4EE;
+      --paper:#FFFDF9;
+      --gold:#B99A64;
+      --line:rgba(13,39,37,.12);
+      --muted:#667774;
+      --shadow:0 28px 80px rgba(19,52,49,.12);
+      --radius:30px;
+      --serif:'DM Serif Display', Georgia, serif;
+      --sans:'DM Sans', system-ui, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--cream)}
+    body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+    button{cursor:pointer}
+    ::selection{background:var(--teal);color:#fff}
+
+    .noise{position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+    .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;font-weight:700;color:var(--teal)}
+    .eyebrow:before{content:"";width:28px;height:1px;background:currentColor}
+    .display{font-family:var(--serif);font-weight:400;letter-spacing:-.035em;line-height:.96}
+    .muted{color:var(--muted)}
+    .section{padding:110px 0}
+    .reveal{opacity:0;transform:translateY(18px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+    .reveal.show{opacity:1;transform:none}
+
+    .demo-bar{background:var(--ink);color:#e9f1ef;font-size:.76rem;letter-spacing:.04em;text-align:center;padding:9px 16px}
+    .demo-bar strong{color:#fff}
+
+    header{position:sticky;top:0;z-index:50;background:rgba(247,244,238,.88);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.3s}
+    header.scrolled{border-color:var(--line);box-shadow:0 10px 30px rgba(13,39,37,.035)}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.02em}
+    .brand-mark{width:42px;height:42px;border:1px solid rgba(28,91,85,.24);border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.62)}
+    .brand-mark svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:1.7}
+    .brand small{display:block;color:var(--muted);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-top:1px}
+    nav{display:flex;align-items:center;gap:28px;font-size:.9rem}
+    nav a{color:#39514e;transition:.25s}
+    nav a:hover{color:var(--teal)}
+    .nav-cta{padding:12px 18px;border:1px solid var(--ink);border-radius:999px;font-weight:600;color:var(--ink)}
+    .nav-cta:hover{background:var(--ink);color:white}
+    .menu-btn{display:none;border:0;background:none;width:44px;height:44px;border-radius:50%;align-items:center;justify-content:center;color:var(--ink)}
+
+    .hero{padding:74px 0 90px;position:relative;overflow:hidden}
+    .hero:before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle at center,rgba(221,234,230,.85),rgba(221,234,230,0) 68%);right:-170px;top:-160px;pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:72px;align-items:center}
+    .hero h1{font-size:clamp(4.1rem,7vw,7.15rem);margin:21px 0 28px;max-width:770px}
+    .hero h1 em{font-style:normal;color:var(--teal)}
+    .hero-copy{font-size:1.08rem;color:#526561;max-width:580px;margin:0 0 34px}
+    .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .btn{border:0;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 23px;font-weight:700;transition:.28s;min-height:54px}
+    .btn-primary{background:var(--ink);color:white;box-shadow:0 16px 32px rgba(13,39,37,.16)}
+    .btn-primary:hover{background:var(--teal);transform:translateY(-2px)}
+    .btn-secondary{border:1px solid var(--line);background:rgba(255,255,255,.45);color:var(--ink)}
+    .btn-secondary:hover{border-color:rgba(28,91,85,.35);background:white}
+    .arrow{font-size:1.2rem}
+    .hero-note{margin-top:30px;display:flex;align-items:center;gap:14px;color:#657671;font-size:.8rem}
+    .hero-note .faces{display:flex}
+    .hero-note .face{width:34px;height:34px;border-radius:50%;border:3px solid var(--cream);margin-left:-8px;background:var(--mint);display:grid;place-items:center;font-size:.68rem;color:var(--teal);font-weight:800}
+    .hero-note .face:first-child{margin-left:0}
+
+    .hero-visual{position:relative;min-height:650px}
+    .photo-main{position:absolute;inset:0 0 70px 38px;border-radius:170px 170px 34px 34px;overflow:hidden;box-shadow:var(--shadow);background:#dfe5e2}
+    .photo-main:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(13,39,37,.14),transparent 40%)}
+    .photo-main img{width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(.98)}
+    .floating-card{position:absolute;background:rgba(255,253,249,.93);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.8);box-shadow:0 20px 60px rgba(13,39,37,.12);border-radius:22px;padding:18px 19px}
+    .floating-card strong{display:block;font-size:.9rem;margin-bottom:2px}
+    .floating-card small{color:var(--muted);font-size:.74rem}
+    .floating-card.one{left:0;bottom:32px;min-width:220px}
+    .floating-card.two{right:-28px;top:84px;min-width:190px}
+    .card-icon{width:36px;height:36px;background:var(--mint);border-radius:12px;display:grid;place-items:center;margin-bottom:10px;color:var(--teal)}
+    .card-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7}
+    .micro-line{height:1px;width:44px;background:var(--gold);margin:12px 0 0}
+
+    .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.22)}
+    .trust-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+    .trust-item{padding:30px 24px;border-right:1px solid var(--line)}
+    .trust-item:last-child{border-right:0}
+    .trust-item span{display:block;font-family:var(--serif);font-size:1.5rem;margin-bottom:4px}
+    .trust-item small{color:var(--muted)}
+
+    .intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:start}
+    .intro h2{font-size:clamp(3rem,5vw,5.1rem);margin:16px 0 0}
+    .intro-right{padding-top:50px}
+    .intro-right>p{font-size:1.2rem;color:#4e625e;max-width:650px;margin-top:0}
+    .treatment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:42px}
+    .treatment{background:rgba(255,255,255,.48);border:1px solid var(--line);border-radius:22px;padding:26px;min-height:190px;transition:.3s}
+    .treatment:hover{background:var(--paper);transform:translateY(-3px);box-shadow:0 18px 45px rgba(13,39,37,.065)}
+    .treatment .num{font-size:.72rem;color:var(--gold);font-weight:700;letter-spacing:.13em}
+    .treatment h3{font-size:1.15rem;margin:26px 0 8px}
+    .treatment p{margin:0;color:var(--muted);font-size:.9rem}
+
+    .experience{background:var(--ink);color:white;position:relative;overflow:hidden}
+    .experience:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;border:1px solid rgba(255,255,255,.1);right:-230px;bottom:-230px}
+    .experience-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .experience-media{position:relative}
+    .experience-media img{width:100%;height:620px;object-fit:cover;border-radius:26px;filter:saturate(.72) contrast(1.03)}
+    .experience-badge{position:absolute;right:-32px;bottom:32px;background:var(--mint);color:var(--ink);border-radius:22px;padding:24px;width:210px;box-shadow:0 20px 55px rgba(0,0,0,.22)}
+    .experience-badge strong{font-family:var(--serif);font-size:2.5rem;font-weight:400;line-height:1}
+    .experience-badge small{display:block;color:#405a56;margin-top:8px}
+    .experience h2{font-size:clamp(3rem,5vw,5rem);margin:18px 0 30px;max-width:600px}
+    .experience p{color:#c4d1ce;font-size:1.06rem;max-width:560px}
+    .bullets{display:grid;gap:16px;margin-top:34px}
+    .bullet{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start}
+    .bullet i{width:38px;height:38px;border:1px solid rgba(255,255,255,.16);border-radius:50%;display:grid;place-items:center;font-style:normal;color:#d8e8e4}
+    .bullet strong{display:block;margin-bottom:4px}
+    .bullet span{color:#9fb2ae;font-size:.88rem}
+
+    .process-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:54px}
+    .process-head h2{font-size:clamp(3rem,5vw,5rem);margin:15px 0 0;max-width:720px}
+    .process-head p{max-width:380px;color:var(--muted)}
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .process-card{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:32px;min-height:290px;position:relative;overflow:hidden}
+    .process-card .step{font-family:var(--serif);font-size:4rem;color:rgba(28,91,85,.14);line-height:1}
+    .process-card h3{margin:60px 0 9px;font-size:1.15rem}
+    .process-card p{margin:0;color:var(--muted);font-size:.91rem}
+    .process-card:after{content:"";position:absolute;width:130px;height:130px;border:1px solid rgba(28,91,85,.1);border-radius:50%;right:-50px;top:-50px}
+
+    .compare{padding-top:0}
+    .compare-box{border:1px solid var(--line);border-radius:34px;background:linear-gradient(135deg,#eff4f1 0%,#fbfaf6 58%);padding:58px;display:grid;grid-template-columns:1fr .9fr;gap:70px;align-items:center}
+    .compare h2{font-size:clamp(2.8rem,4.5vw,4.5rem);margin:14px 0 25px}
+    .compare p{color:var(--muted);max-width:600px}
+    .compare-list{display:grid;gap:12px}
+    .compare-item{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.68);border:1px solid rgba(13,39,37,.08);padding:15px 17px;border-radius:16px;font-weight:600;font-size:.9rem}
+    .check{width:28px;height:28px;background:var(--teal);color:white;border-radius:50%;display:grid;place-items:center;font-size:.75rem;flex:0 0 auto}
+
+    .faq{background:#EFECE5}
+    .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px}
+    .faq h2{font-size:clamp(3rem,5vw,5rem);margin:16px 0 22px}
+    .faq-left p{color:var(--muted);max-width:420px}
+    .faq-list{border-top:1px solid rgba(13,39,37,.15)}
+    .faq-item{border-bottom:1px solid rgba(13,39,37,.15)}
+    .faq-q{width:100%;background:none;border:0;padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;color:var(--ink);font-weight:700}
+    .faq-q span:last-child{font-size:1.5rem;font-weight:400;transition:.3s}
+    .faq-a{display:grid;grid-template-rows:0fr;transition:.35s ease}
+    .faq-a>div{overflow:hidden;color:var(--muted);font-size:.93rem}
+    .faq-a p{padding:0 36px 20px 0;margin:0}
+    .faq-item.open .faq-a{grid-template-rows:1fr}
+    .faq-item.open .faq-q span:last-child{transform:rotate(45deg)}
+
+    .final-cta{background:var(--teal);color:white;border-radius:42px;margin:28px auto 70px;width:min(1240px,calc(100% - 30px));padding:84px 50px;position:relative;overflow:hidden;text-align:center}
+    .final-cta:before,.final-cta:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.15)}
+    .final-cta:before{width:420px;height:420px;left:-160px;top:-180px}
+    .final-cta:after{width:520px;height:520px;right:-230px;bottom:-270px}
+    .final-cta .eyebrow{color:#d7e7e3;position:relative;z-index:1}
+    .final-cta h2{font-size:clamp(3rem,6vw,5.8rem);margin:20px auto 22px;max-width:840px;position:relative;z-index:1}
+    .final-cta p{max-width:600px;margin:0 auto 30px;color:#d9e5e2;position:relative;z-index:1}
+    .final-cta .btn{background:white;color:var(--ink);position:relative;z-index:1}
+    .final-cta .btn:hover{transform:translateY(-2px);background:#f4f7f6}
+
+    footer{padding:0 0 46px}
+    .footer-grid{display:grid;grid-template-columns:1fr auto auto;gap:40px;align-items:end;padding-top:34px;border-top:1px solid var(--line)}
+    .footer-grid p{margin:8px 0 0;color:var(--muted);font-size:.8rem}
+    .footer-links{display:flex;gap:22px;font-size:.8rem;color:var(--muted)}
+    .made-by{text-align:right;font-size:.72rem;color:var(--muted)}
+    .made-by strong{display:block;color:var(--ink);font-size:.82rem}
+
+    .floating-multiplik{position:fixed;right:22px;bottom:22px;z-index:70;background:var(--ink);color:white;border-radius:999px;padding:13px 17px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:.82rem;box-shadow:0 18px 45px rgba(13,39,37,.28);transition:.25s}
+    .floating-multiplik:hover{background:var(--teal);transform:translateY(-2px)}
+    .floating-multiplik span:first-child{width:26px;height:26px;background:white;color:var(--ink);border-radius:50%;display:grid;place-items:center;font-size:.72rem}
+
+    .modal-backdrop{position:fixed;inset:0;background:rgba(5,21,20,.64);z-index:100;display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:.3s}
+    .modal-backdrop.open{opacity:1;visibility:visible}
+    .modal{width:min(540px,100%);background:var(--paper);border-radius:28px;padding:34px;box-shadow:0 30px 100px rgba(0,0,0,.24);transform:translateY(15px) scale(.98);transition:.3s}
+    .modal-backdrop.open .modal{transform:none}
+    .modal-top{display:flex;justify-content:space-between;gap:20px;align-items:start}
+    .modal h3{font-family:var(--serif);font-size:2.25rem;font-weight:400;line-height:1.05;margin:10px 0 12px}
+    .modal p{color:var(--muted);margin:0 0 24px}
+    .close{width:40px;height:40px;border:1px solid var(--line);background:white;border-radius:50%;font-size:1.2rem}
+    .demo-card{padding:18px;border:1px solid var(--line);border-radius:18px;background:#f7f7f2;margin-bottom:22px}
+    .demo-card strong{display:block;margin-bottom:4px}
+    .demo-card small{color:var(--muted)}
+    .modal-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+    @media(max-width:980px){
+      nav{display:none}
+      .menu-btn{display:flex}
+      .nav.open nav{display:flex;position:absolute;top:82px;left:20px;right:20px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px;flex-direction:column;align-items:stretch;box-shadow:var(--shadow)}
+      .nav.open nav a{padding:8px 4px}
+      .hero-grid,.experience-grid,.intro,.faq-grid,.compare-box{grid-template-columns:1fr;gap:52px}
+      .hero{padding-top:48px}
+      .hero-visual{min-height:560px;max-width:650px;width:100%;margin:auto}
+      .photo-main{inset:0 30px 55px 60px}
+      .floating-card.two{right:0}
+      .intro-right{padding-top:0}
+      .experience-media{max-width:650px}
+      .experience-badge{right:20px}
+      .process-head{display:block}
+      .process-head p{margin-top:20px}
+      .process-grid{grid-template-columns:1fr}
+      .process-card{min-height:230px}
+      .process-card h3{margin-top:35px}
+      .trust-grid{grid-template-columns:repeat(2,1fr)}
+      .trust-item:nth-child(2){border-right:0}
+      .trust-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .footer-grid{grid-template-columns:1fr;align-items:start}
+      .made-by{text-align:left}
+    }
+
+    @media(max-width:640px){
+      .wrap{width:min(100% - 28px,1180px)}
+      .section{padding:78px 0}
+      .demo-bar{font-size:.67rem}
+      .nav{height:70px}
+      .nav.open nav{top:70px;left:14px;right:14px}
+      .brand small{display:none}
+      .hero{padding:42px 0 65px}
+      .hero h1{font-size:clamp(3.4rem,16vw,5.2rem);margin-top:18px}
+      .hero-copy{font-size:1rem}
+      .hero-actions{align-items:stretch}
+      .hero-actions .btn{width:100%}
+      .hero-note{align-items:flex-start}
+      .hero-visual{min-height:480px;margin-top:10px}
+      .photo-main{inset:0 10px 48px 28px;border-radius:110px 110px 28px 28px}
+      .floating-card{padding:15px}
+      .floating-card.one{left:0;bottom:16px;min-width:190px}
+      .floating-card.two{right:0;top:45px;min-width:160px}
+      .trust-grid{grid-template-columns:1fr 1fr}
+      .trust-item{padding:22px 16px}
+      .trust-item span{font-size:1.22rem}
+      .intro{gap:40px}
+      .intro h2,.experience h2,.process-head h2,.faq h2,.compare h2{font-size:clamp(2.7rem,13vw,4rem)}
+      .treatment-grid{grid-template-columns:1fr}
+      .treatment{min-height:auto}
+      .experience-media img{height:460px}
+      .experience-badge{right:12px;bottom:14px;width:180px;padding:18px}
+      .experience-badge strong{font-size:2rem}
+      .compare-box{padding:34px 24px;border-radius:26px}
+      .faq-grid{gap:35px}
+      .final-cta{padding:64px 24px;border-radius:30px;margin-bottom:55px}
+      .final-cta h2{font-size:clamp(2.8rem,14vw,4.4rem)}
+      .footer-links{flex-wrap:wrap}
+      .floating-multiplik{right:14px;bottom:14px;padding:11px 14px}
+      .floating-multiplik .label{display:none}
+      .modal{padding:26px 22px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*:before,*:after{animation:none!important;transition:none!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="demo-bar"><strong>PROJETO DEMONSTRATIVO</strong> · Site modelo para apresentação comercial da Multiplik Digital</div>
+
+  <header id="header">
+    <div class="wrap nav" id="nav">
+      <a class="brand" href="#inicio" aria-label="Clínica Modelo - início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7.2 3.8c1.8-.7 3.1.4 4.8.4s3-1.1 4.8-.4c2.1.8 3.2 3.3 2.5 5.7-.6 2.1-1.9 3.5-2.3 6.5-.3 2.2-1.3 4.2-2.6 4.2-1.5 0-1.3-4.8-2.4-4.8s-.9 4.8-2.4 4.8c-1.3 0-2.3-2-2.6-4.2-.4-3-1.7-4.4-2.3-6.5-.7-2.4.4-4.9 2.5-5.7Z"/></svg>
+        </span>
+        <span>Clínica Modelo<small>Odontologia contemporânea</small></span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="#tratamentos">Tratamentos</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#duvidas">Dúvidas</a>
+        <button class="nav-cta open-demo" type="button">Agendar avaliação</button>
+      </nav>
+      <button class="menu-btn" type="button" aria-label="Abrir menu" id="menuBtn">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">Cuidado, estética e tecnologia</span>
+          <h1 class="display">Seu sorriso merece um cuidado <em>à altura.</em></h1>
+          <p class="hero-copy">Uma experiência odontológica pensada para unir conforto, precisão e naturalidade — do primeiro atendimento ao resultado final.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary open-demo" type="button">Agendar uma avaliação <span class="arrow">→</span></button>
+            <a class="btn btn-secondary" href="#tratamentos">Conhecer tratamentos</a>
+          </div>
+          <div class="hero-note">
+            <div class="faces" aria-hidden="true"><span class="face">01</span><span class="face">02</span><span class="face">03</span></div>
+            <span>Atendimento particular com experiência individualizada.</span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Ambiente odontológico moderno">
+          <div class="photo-main">
+            <img src="https://images.unsplash.com/photo-1642844771937-23accb161a3d?auto=format&fit=crop&fm=jpg&q=82&w=1800" alt="Consultório odontológico moderno e bem iluminado" />
+          </div>
+          <div class="floating-card one">
+            <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7"/></svg></div>
+            <strong>Plano de cuidado personalizado</strong>
+            <small>Cada sorriso pede uma estratégia única.</small>
+            <div class="micro-line"></div>
+          </div>
+          <div class="floating-card two">
+            <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></div>
+            <strong>Tecnologia com propósito</strong>
+            <small>Precisão sem perder o acolhimento.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" aria-label="Diferenciais">
+      <div class="wrap trust-grid">
+        <div class="trust-item"><span>Atendimento humano</span><small>Escuta antes de qualquer procedimento.</small></div>
+        <div class="trust-item"><span>Planejamento individual</span><small>Condutas adaptadas ao seu momento.</small></div>
+        <div class="trust-item"><span>Ambiente contemporâneo</span><small>Conforto do início ao fim.</small></div>
+        <div class="trust-item"><span>Resultados naturais</span><small>Saúde, função e estética em equilíbrio.</small></div>
+      </div>
+    </section>
+
+    <section class="section" id="tratamentos">
+      <div class="wrap intro">
+        <div class="reveal">
+          <span class="eyebrow">Tratamentos</span>
+          <h2 class="display">Cuidado para cada fase do seu sorriso.</h2>
+        </div>
+        <div class="intro-right reveal">
+          <p>Da prevenção à reabilitação, a proposta é construir um plano claro e coerente com suas necessidades — sem excessos e sem soluções padronizadas.</p>
+          <div class="treatment-grid">
+            <article class="treatment"><span class="num">01 / ESTÉTICA</span><h3>Harmonização do sorriso</h3><p>Planejamento estético com foco em naturalidade, proporção e preservação da estrutura dental.</p></article>
+            <article class="treatment"><span class="num">02 / REABILITAÇÃO</span><h3>Implantes e próteses</h3><p>Recupere função, segurança e conforto com soluções pensadas para o seu caso.</p></article>
+            <article class="treatment"><span class="num">03 / ALINHAMENTO</span><h3>Ortodontia</h3><p>Opções de alinhamento para diferentes perfis, rotinas e objetivos de tratamento.</p></article>
+            <article class="treatment"><span class="num">04 / PREVENÇÃO</span><h3>Odontologia preventiva</h3><p>Acompanhamento regular para manter saúde, estabilidade e tranquilidade ao longo do tempo.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" id="experiencia">
+      <div class="wrap experience-grid">
+        <div class="experience-media reveal">
+          <img src="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?auto=format&fit=crop&fm=jpg&q=82&w=1600" alt="Dentista conversando com paciente em consultório moderno" />
+          <div class="experience-badge"><strong>Sem pressa.</strong><small>Tempo para entender, explicar e decidir junto.</small></div>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow" style="color:#bbd1cc">A experiência</span>
+          <h2 class="display">Odontologia também é sobre como você se sente durante o processo.</h2>
+          <p>Uma boa experiência começa antes do procedimento. Por isso, cada etapa é explicada com clareza para que você saiba o que está sendo feito, por quê e quais são as alternativas.</p>
+          <div class="bullets">
+            <div class="bullet"><i>01</i><div><strong>Escuta e diagnóstico</strong><span>Entendemos sua queixa, histórico, rotina e expectativas.</span></div></div>
+            <div class="bullet"><i>02</i><div><strong>Plano transparente</strong><span>Você conhece as etapas antes de começar qualquer tratamento.</span></div></div>
+            <div class="bullet"><i>03</i><div><strong>Acompanhamento próximo</strong><span>O cuidado continua depois do procedimento.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="wrap">
+        <div class="process-head reveal">
+          <div><span class="eyebrow">Como funciona</span><h2 class="display">Um caminho simples até o seu novo sorriso.</h2></div>
+          <p>Uma jornada clara reduz insegurança e torna cada decisão mais confortável.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card reveal"><div class="step">01</div><h3>Primeira conversa</h3><p>Você conta o que deseja melhorar e nós entendemos seu histórico e suas prioridades.</p></article>
+          <article class="process-card reveal"><div class="step">02</div><h3>Avaliação e planejamento</h3><p>Exames, diagnóstico e explicação das possibilidades para construir o melhor plano.</p></article>
+          <article class="process-card reveal"><div class="step">03</div><h3>Tratamento e acompanhamento</h3><p>Execução cuidadosa com acompanhamento próximo durante e depois de cada etapa.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compare">
+      <div class="wrap compare-box reveal">
+        <div>
+          <span class="eyebrow">Presença digital com propósito</span>
+          <h2 class="display">Um site que transmite o nível do seu atendimento antes mesmo da consulta.</h2>
+          <p>Este projeto demonstra como uma clínica pode unir posicionamento premium, clareza e conversão em uma experiência digital que prepara o paciente para entrar em contato.</p>
+        </div>
+        <div class="compare-list">
+          <div class="compare-item"><span class="check">✓</span> Estrutura preparada para Google Ads</div>
+          <div class="compare-item"><span class="check">✓</span> Experiência mobile pensada separadamente</div>
+          <div class="compare-item"><span class="check">✓</span> Botões e jornadas voltados à conversão</div>
+          <div class="compare-item"><span class="check">✓</span> SEO técnico e conteúdo local</div>
+          <div class="compare-item"><span class="check">✓</span> Rastreamento de WhatsApp e formulários</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="duvidas">
+      <div class="wrap faq-grid">
+        <div class="faq-left reveal">
+          <span class="eyebrow">Dúvidas frequentes</span>
+          <h2 class="display">Antes de agendar.</h2>
+          <p>Informação clara ajuda o paciente a chegar à primeira consulta com mais segurança.</p>
+        </div>
+        <div class="faq-list reveal">
+          <div class="faq-item open">
+            <button class="faq-q" type="button"><span>Como funciona a primeira avaliação?</span><span>+</span></button>
+            <div class="faq-a"><div><p>Na primeira consulta, a clínica entende sua necessidade, avalia o caso e explica as possibilidades de tratamento antes de qualquer decisão.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button"><span>Posso tirar dúvidas antes de agendar?</span><span>+</span></button>
+            <div class="faq-a"><div><p>Sim. O WhatsApp pode ser utilizado para dúvidas iniciais sobre atendimento, localização, disponibilidade e organização da consulta.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button"><span>Quais tratamentos podem aparecer no site?</span><span>+</span></button>
+            <div class="faq-a"><div><p>A estrutura é personalizada conforme o foco da clínica: implantes, ortodontia, estética, odontopediatria, prevenção, reabilitação e outras especialidades.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button"><span>O site pode ser usado em campanhas do Google?</span><span>+</span></button>
+            <div class="faq-a"><div><p>Sim. O projeto pode incluir páginas específicas por tratamento, instalação de mensuração e estrutura voltada a campanhas de pesquisa.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta reveal">
+      <span class="eyebrow">Seu próximo passo</span>
+      <h2 class="display">Seu atendimento já é profissional. Sua presença digital também pode ser.</h2>
+      <p>Transforme o site da sua clínica em uma experiência que transmite confiança, posiciona seus tratamentos e facilita o primeiro contato.</p>
+      <a class="btn" href="https://wa.me/5531996399205?text=Ol%C3%A1%21%20Vi%20o%20site%20modelo%20para%20cl%C3%ADnicas%20odontol%C3%B3gicas%20e%20quero%20entender%20como%20ficaria%20para%20a%20minha%20cl%C3%ADnica." target="_blank" rel="noopener noreferrer">Quero um site assim <span class="arrow">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.2 3.8c1.8-.7 3.1.4 4.8.4s3-1.1 4.8-.4c2.1.8 3.2 3.3 2.5 5.7-.6 2.1-1.9 3.5-2.3 6.5-.3 2.2-1.3 4.2-2.6 4.2-1.5 0-1.3-4.8-2.4-4.8s-.9 4.8-2.4 4.8c-1.3 0-2.3-2-2.6-4.2-.4-3-1.7-4.4-2.3-6.5-.7-2.4.4-4.9 2.5-5.7Z"/></svg></span>
+        <span>Clínica Modelo<small>Projeto demonstrativo</small></span>
+      </div>
+      <div class="footer-links"><a href="#tratamentos">Tratamentos</a><a href="#experiencia">Experiência</a><a href="#duvidas">FAQ</a></div>
+      <div class="made-by"><strong>Projeto por Multiplik Digital</strong>Modelo comercial · Não representa uma clínica real</div>
+    </div>
+  </footer>
+
+  <a class="floating-multiplik" href="https://wa.me/5531996399205?text=Ol%C3%A1%21%20Vi%20o%20site%20modelo%20para%20cl%C3%ADnicas%20odontol%C3%B3gicas." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Multiplik Digital">
+    <span>M</span><span class="label">Quero um site assim</span>
+  </a>
+
+  <div class="modal-backdrop" id="modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-top">
+        <div><span class="eyebrow">Demonstração</span><h3 id="modalTitle">Em um projeto real, este botão leva ao WhatsApp da clínica.</h3></div>
+        <button class="close" id="closeModal" type="button" aria-label="Fechar">×</button>
+      </div>
+      <p>O texto, número, mensagem inicial, horários e eventos de conversão seriam configurados especialmente para o seu atendimento.</p>
+      <div class="demo-card"><strong>Exemplo de mensagem automática</strong><small>“Olá! Encontrei a clínica pelo site e gostaria de saber como funciona a avaliação.”</small></div>
+      <div class="modal-actions">
+        <a class="btn btn-primary" href="https://wa.me/5531996399205?text=Ol%C3%A1%21%20Vi%20o%20site%20modelo%20para%20cl%C3%ADnicas%20odontol%C3%B3gicas%20e%20quero%20entender%20como%20ficaria%20para%20a%20minha%20cl%C3%ADnica." target="_blank" rel="noopener noreferrer">Falar com a Multiplik →</a>
+        <button class="btn btn-secondary" type="button" id="closeModal2">Continuar navegando</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const header = document.getElementById('header');
+    const nav = document.getElementById('nav');
+    const menuBtn = document.getElementById('menuBtn');
+    const modal = document.getElementById('modal');
+    const openers = document.querySelectorAll('.open-demo');
+    const closers = [document.getElementById('closeModal'), document.getElementById('closeModal2')];
+
+    window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>10));
+    menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+    document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+    const openModal=()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'};
+    const closeModal=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};
+    openers.forEach(btn=>btn.addEventListener('click',openModal));
+    closers.forEach(btn=>btn&&btn.addEventListener('click',closeModal));
+    modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+    document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{
+      const item=btn.closest('.faq-item');
+      document.querySelectorAll('.faq-item').forEach(el=>{if(el!==item)el.classList.remove('open')});
+      item.classList.toggle('open');
+    }));
+
+    const io=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('show');io.unobserve(entry.target)}
+    }),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
